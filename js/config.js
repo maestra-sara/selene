@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * CONFIGURACIÓN CENTRALIZADA - MAESTRA SELENE (EUROPA)
+ * CONFIGURACIÓN CENTRALIZADA - MAESTRA SELENE (ESPAÑA)
  * =========================================================================
  */
 
@@ -8,35 +8,37 @@ const SITE_CONFIG = {
     master: {
         name: "Maestra Selene",
         title: "Guía Espiritual & Custodia de la Alta Magia",
-        subtitle: "Tradición Ancestral & Santuario de Poder para Europa",
+        subtitle: "Tradición Ancestral & Santuario de Poder para España",
         experienceYears: "+25 años de experiencia",
-        location: "Madrid · Barcelona · Toda Europa (CET)",
+        location: "Madrid · Barcelona · Toda España",
         rating: "4.99",
-        reviewsCount: "+1,480 Casos Resueltos en Europa"
+        reviewsCount: "+1,480 Casos Resueltos en España"
     },
 
     whatsapp: {
         phone: "50239424561",
-        defaultMessage: "¡Hola Maestra Selene! Necesito una consulta espiritual urgente y confidencial desde Europa. ¿Podría asesorarme?",
-        urgencyMessage: "Hola Maestra Selene, veo que quedan pocos cupos prioritarios para hoy en Europa. Deseo apartar mi consulta de inmediato.",
+        defaultMessage: "¡Hola Maestra Selene! Necesito una consulta espiritual urgente y confidencial desde España. ¿Podría asesorarme?",
+        urgencyMessage: "Hola Maestra Selene, veo que quedan pocos cupos prioritarios para hoy en España. Deseo apartar mi consulta de inmediato.",
         serviceMessage: (serviceName) => `Hola Maestra Selene, solicito información y consulta urgente sobre el ritual: "${serviceName}".`,
         oracleMessage: (cardNames) => `Hola Maestra Selene, realicé la tirada del Tarot en tu página y me salieron las cartas: [${cardNames}]. Deseo mi interpretación completa.`,
         diagMessage: (area, symptom) => `Hola Maestra Selene, realicé el test espiritual sobre ${area || 'mi caso'} con síntoma de ${symptom || 'bloqueo'}. Deseo consultar con usted.`,
-        testimonialMessage: "Hola Maestra Selene, vi los casos de éxito resueltos en Europa y deseo una ayuda y resultado similar para mi caso."
+        testimonialMessage: "Hola Maestra Selene, vi los casos de éxito resueltos en España y deseo una ayuda y resultado similar para mi caso."
     },
 
-    // Notificaciones de Prueba Social en Vivo (Europa)
+    // Notificaciones de Prueba Social en Vivo (España)
     liveActivity: [
-        { name: "Elena M.", city: "Madrid, España", service: "Amarre de Retorno de Pareja", time: "hace 2 minutos" },
-        { name: "Carlos B.", city: "Barcelona, España", service: "Apertura de Caminos & Loterías", time: "hace 5 minutos" },
-        { name: "Valeria S.", city: "Valencia, España", service: "Pasión & Endulzamiento", time: "hace 8 minutos" },
-        { name: "Andrés G.", city: "Sevilla, España", service: "Limpieza Espiritual & Destrabe", time: "hace 12 minutos" },
-        { name: "Lucía P.", city: "Milán, Italia", service: "Retiro de Terceras Personas", time: "hace 16 minutos" },
-        { name: "Fernando T.", city: "Málaga, España", service: "Dinero, Trabajo y Bienestar", time: "hace 20 minutos" },
-        { name: "Mariana R.", city: "Ginebra, Suiza", service: "Recupera a tu Ex", time: "hace 25 minutos" },
-        { name: "Roberto V.", city: "Bilbao, España", service: "Sellos y Protección Áurica", time: "hace 29 minutos" },
-        { name: "Beatriz C.", city: "Zaragoza, España", service: "Lectura de Tarot de Amor", time: "hace 34 minutos" },
-        { name: "Mateo D.", city: "París, Francia", service: "Magia Roja & Fidelidad", time: "hace 39 minutos" }
+        { name: "Elena M.", city: "Madrid", service: "Amarre de Retorno de Pareja", time: "hace 2 minutos" },
+        { name: "Carlos B.", city: "Barcelona", service: "Apertura de Caminos & Loterías", time: "hace 5 minutos" },
+        { name: "Valeria S.", city: "Valencia", service: "Pasión & Endulzamiento", time: "hace 8 minutos" },
+        { name: "Andrés G.", city: "Sevilla", service: "Limpieza Espiritual & Destrabe", time: "hace 12 minutos" },
+        { name: "Fernando T.", city: "Málaga", service: "Dinero, Trabajo y Bienestar", time: "hace 15 minutos" },
+        { name: "Roberto V.", city: "Bilbao", service: "Sellos y Protección Áurica", time: "hace 19 minutos" },
+        { name: "Beatriz C.", city: "Zaragoza", service: "Lectura de Tarot de Amor", time: "hace 23 minutos" },
+        { name: "Daniel M.", city: "Alicante", service: "Retiro de Terceras Personas", time: "hace 28 minutos" },
+        { name: "Carmen R.", city: "Palma de Mallorca", service: "Recupera a tu Ex", time: "hace 33 minutos" },
+        { name: "Javier S.", city: "Murcia", service: "Magia Roja & Fidelidad", time: "hace 38 minutos" },
+        { name: "Lucía P.", city: "Vigo", service: "Endulzamiento y Dominio", time: "hace 42 minutos" },
+        { name: "Gonzalo F.", city: "Valladolid", service: "Limpieza de Mal de Ojo", time: "hace 47 minutos" }
     ],
 
     // Cartas de Tarot para el Módulo Interactivo
