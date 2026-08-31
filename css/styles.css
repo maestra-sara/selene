@@ -1,0 +1,1340 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --gold: #fdf5e6;
+  --gold-primary: #f3c64c;
+  --gold-dark: #d4af37;
+  --gold-glow: #ffdf80;
+  --bg-dark: #0d0703;
+  --bg-surface: #180e08;
+  --bg-card: rgba(26, 14, 8, 0.75);
+  --bg-card-hover: rgba(38, 20, 12, 0.9);
+  --border-gold: rgba(212, 175, 55, 0.35);
+  --border-gold-bright: rgba(243, 198, 76, 0.7);
+  --crimson: #e63946;
+  --whatsapp-green: #25d366;
+  --gold-gradient: linear-gradient(135deg, #fff8e7 0%, #f3c64c 45%, #d4af37 80%, #aa841c 100%);
+  --gold-text-gradient: linear-gradient(135deg, #ffffff 0%, #f3c64c 50%, #d4af37 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-dark);
+  color: #f0f0f0;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.65;
+}
+
+/* =========================================================================
+   FONDOS MÍSTICOS Y ESTRELLAS
+   ========================================================================= */
+.mystic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 35%, #2a150a 0%, #0d0703 85%);
+  animation: bgPulse 12s infinite alternate;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1.5px 1.5px at 25px 35px, rgba(255, 235, 180, 0.8), rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 75px 85px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 140px 180px, rgba(243, 198, 76, 0.9), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  opacity: 0.55;
+  animation: zoomStars 75s infinite linear;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =========================================================================
+   BARRA DE URGENCIA SUPERIOR (RESPONSIVE)
+   ========================================================================= */
+.urgency-top-bar {
+  background: linear-gradient(90deg, #2b0804 0%, #4a1007 50%, #2b0804 100%);
+  border-bottom: 1px solid rgba(243, 198, 76, 0.35);
+  padding: 6px 12px;
+  position: relative;
+  z-index: 5001;
+  font-size: 0.84rem;
+  color: #fff;
+}
+
+.urgency-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.urgency-text-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 8px #25d366;
+  flex-shrink: 0;
+  animation: dotPulse 1.5s infinite;
+}
+
+.urgency-link {
+  color: var(--gold-glow);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(243, 198, 76, 0.15);
+  border: 1px solid rgba(243, 198, 76, 0.4);
+  transition: all 0.25s;
+}
+
+.urgency-link:hover {
+  background: var(--gold-gradient);
+  color: #120a05;
+  border-color: var(--gold-glow);
+}
+
+/* =========================================================================
+   HEADER / HERO CON IMAGEN DE FONDO
+   ========================================================================= */
+header {
+  position: relative;
+  text-align: center;
+  padding: 7rem 1.5rem 5.5rem;
+  border-bottom: 2px solid var(--gold-dark);
+  overflow: hidden;
+  background-color: #0d0703;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/maestra.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: brightness(0.46) sepia(0.2) contrast(1.1);
+  transform: scale(1.02);
+  transition: transform 8s ease;
+}
+
+header:hover .header-overlay {
+  transform: scale(1.06);
+}
+
+.header-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: floatUp 1.2s ease-out;
+}
+
+.hero-badge-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--border-gold-bright);
+  padding: 6px 18px;
+  border-radius: 50px;
+  color: var(--gold-glow);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.3rem;
+  box-shadow: 0 0 20px rgba(243, 198, 76, 0.2);
+}
+
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  line-height: 1.15;
+  margin-bottom: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(243, 198, 76, 0.4));
+  animation: textGlow 4s infinite alternate;
+}
+
+.intro {
+  font-size: 1.18rem;
+  max-width: 820px;
+  margin: 0 auto 2rem;
+  color: #f5f5f5;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+}
+
+.highlight {
+  color: var(--gold-glow);
+  font-weight: 700;
+  font-size: 1.3rem;
+  font-family: 'Cinzel', serif;
+  display: inline-block;
+  margin: 4px 0;
+  text-shadow: 0 0 12px rgba(255, 223, 128, 0.5);
+}
+
+.hero-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(20, 10, 5, 0.85);
+  border: 1px solid var(--border-gold);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  color: #e5e5e5;
+  backdrop-filter: blur(5px);
+}
+
+.hero-chip i {
+  color: var(--gold-primary);
+}
+
+/* =========================================================================
+   NAVBAR STICKY
+   ========================================================================= */
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  background: rgba(13, 7, 3, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-gold);
+  padding: 0.7rem 1rem;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icono {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold-dark);
+}
+
+.logo-nombre {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.logo-ubicacion {
+  font-size: 0.7rem;
+  color: #bbb;
+  display: block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  font-family: 'Cinzel', serif;
+}
+
+.nav-menu a:hover {
+  color: var(--gold-glow);
+  text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.cta-nav {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--gold-dark) !important;
+  color: var(--gold-glow) !important;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cta-nav:hover {
+  background: var(--gold-gradient);
+  color: #120a05 !important;
+  box-shadow: 0 0 20px rgba(243, 198, 76, 0.5);
+}
+
+.nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
+/* =========================================================================
+   AVISO MAYORES DE EDAD
+   ========================================================================= */
+.aviso-mayores {
+  background: linear-gradient(90deg, #2b0804 0%, #451007 50%, #2b0804 100%);
+  color: #ffdede;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(230, 57, 70, 0.3);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   MAIN & CONTENIDO
+   ========================================================================= */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 1.2rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--gold-dark);
+  margin: 12px auto 0;
+  box-shadow: 0 0 8px var(--gold-primary);
+}
+
+.section-subtitle {
+  color: #ccc;
+  font-size: 1.05rem;
+  margin-bottom: 2.8rem;
+  max-width: 750px;
+  margin-inline: auto;
+}
+
+/* =========================================================================
+   GRID DE LOS 13 SERVICIOS ORIGINALES
+   ========================================================================= */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.servicio {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: var(--gold-primary);
+  background: var(--bg-card-hover);
+  box-shadow: 0 12px 35px rgba(243, 198, 76, 0.18);
+}
+
+.img-wrapper {
+  overflow: hidden;
+  height: 200px;
+  border-bottom: 1px solid var(--border-gold);
+  position: relative;
+  background-color: #120703;
+}
+
+.img-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(20, 10, 5, 0.85) 0%, transparent 80%);
+}
+
+.servicio img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  opacity: 0.95;
+}
+
+.servicio:hover img {
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+.servicio h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  margin: 1.2rem 1rem 0.5rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.servicio:hover h3 {
+  color: #fff;
+  text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.servicio p {
+  color: #d8d8d8;
+  padding: 0 1.2rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+/* =========================================================================
+   MÓDULO INTERACTIVO DE TAROT (CRO)
+   ========================================================================= */
+.oracle-box {
+  background: rgba(22, 12, 7, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  margin: 4.5rem auto 3.5rem;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.oracle-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(243, 198, 76, 0.1), transparent 60%);
+  pointer-events: none;
+}
+
+.oracle-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.oracle-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-pos-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  color: var(--gold-primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.oracle-card-3d {
+  width: 100%;
+  aspect-ratio: 2/3.3;
+  max-width: 210px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.oracle-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+.oracle-card-3d.flipped .oracle-card-inner {
+  transform: rotateY(180deg);
+}
+
+.oracle-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-gold);
+}
+
+.oracle-back {
+  background: #140a05 url('../assets/tarot-back.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.oracle-back span {
+  background: rgba(10, 5, 2, 0.85);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold-glow);
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: 'Cinzel', serif;
+}
+
+.oracle-front {
+  transform: rotateY(180deg);
+  background: #140a05;
+}
+
+.oracle-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oracle-card-name {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13, 7, 3, 0.9);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.oracle-result {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(30, 15, 8, 0.7);
+  border: 1px solid var(--gold-dark);
+  border-radius: 8px;
+  animation: floatUp 0.6s ease;
+}
+
+.oracle-result.active {
+  display: block;
+}
+
+/* Destellos Místicos al Voltear Carta */
+.oracle-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--gold-glow);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px var(--gold-primary);
+  animation: sparkFly 0.8s ease-out forwards;
+  z-index: 10;
+}
+
+@keyframes sparkFly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* =========================================================================
+   BOTONES WHATSAPP DE CONVERSIÓN
+   ========================================================================= */
+.whatsapp-btn {
+  display: inline-flex;
+  width: fit-content;
+  margin: 2.2rem auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--gold-gradient);
+  color: #120a05;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+  animation: pulseElegant 2.5s infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.04);
+  color: #000;
+  box-shadow: 0 0 45px rgba(243, 198, 76, 0.7);
+}
+
+.boton-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* =========================================================================
+   SECCIÓN DE TRANSFORMACIÓN / EL PODER ANCESTRAL EN EUROPA
+   ========================================================================= */
+.img-unica-transformacion {
+  position: relative;
+  max-width: 860px;
+  margin: 4.5rem auto 3rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--border-gold);
+}
+
+.img-unica-transformacion img {
+  width: 100%;
+  display: block;
+  filter: contrast(1.05) brightness(1.05);
+}
+
+.texto-transformacion {
+  background: rgba(18, 9, 4, 0.96);
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--gold-dark);
+}
+
+.texto-transformacion h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.texto-transformacion p {
+  color: #e0e0e0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* =========================================================================
+   TESTIMONIOS
+   ========================================================================= */
+#testimonios {
+  margin-top: 4.5rem;
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.testimonio-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  padding: 1.8rem 1.4rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.testimonio-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-primary);
+}
+
+.testimonio-card .stars-icon {
+  color: var(--gold-primary);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.testimonio-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 15px;
+  filter: brightness(0.95);
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.testimonio-card img:hover {
+  opacity: 0.85;
+}
+
+.origen {
+  color: #fff;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* =========================================================================
+   CÓMO FUNCIONA & BLOQUES PREMIUM
+   ========================================================================= */
+.bloque-premium {
+  margin-top: 4.5rem;
+}
+
+.texto-premium {
+  max-width: 820px;
+  margin: 0 auto 2rem;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.texto-premium strong {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.paso-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  padding: 1.8rem 1.5rem;
+  text-align: left;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.paso-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-primary);
+}
+
+.paso-num {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  color: var(--gold-primary);
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.paso-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.paso-text {
+  color: #d0d0d0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   PRIVACIDAD & EXCLUSIVIDAD
+   ========================================================================= */
+.bloque-exclusivo {
+  position: relative;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding-top: 3.5rem;
+}
+
+.exclusivo-inner {
+  background: rgba(18, 9, 4, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 2.5rem 1.8rem;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.sellos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem auto;
+  max-width: 900px;
+}
+
+.sello {
+  border: 1px solid var(--border-gold);
+  color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(35, 18, 8, 0.5);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.nota-exclusiva {
+  margin: 1.2rem auto 0;
+  max-width: 860px;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--gold-primary);
+  background: rgba(40, 20, 10, 0.4);
+  color: #e0e0e0;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.nota-exclusiva span {
+  color: var(--gold-primary);
+  margin-right: 0.5rem;
+}
+
+/* =========================================================================
+   BENEFICIOS / POR QUÉ ELEGIR
+   ========================================================================= */
+#servicios-motivos {
+  margin-top: 4.5rem;
+}
+
+.beneficios {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  max-width: 920px;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+}
+
+.beneficios li {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  font-size: 0.96rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ccc;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.beneficios li:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 8px 25px rgba(243, 198, 76, 0.15);
+}
+
+.beneficios li strong {
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+}
+
+.beneficio-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(243, 198, 76, 0.12);
+  border: 1px solid var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(243, 198, 76, 0.2);
+}
+
+@media (max-width: 768px) {
+  .beneficios {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+footer {
+  background: #080402;
+  padding: 3.5rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  color: #888;
+}
+
+.footer-link {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.footer-link:hover {
+  color: var(--gold-primary);
+}
+
+/* =========================================================================
+   BOTÓN FLOTANTE DIRECTO DE WHATSAPP
+   ========================================================================= */
+.whatsapp-floating {
+  position: fixed;
+  bottom: 25px;
+  right: 22px;
+  z-index: 6000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.6));
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s;
+}
+
+.whatsapp-floating:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 28px rgba(37, 211, 102, 0.9));
+}
+
+.floating-wp-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+}
+
+.wp-badge-age {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background: #e63946;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 50px;
+  border: 1px solid #fff;
+  z-index: 2;
+}
+
+/* =========================================================================
+   TOAST DE PRUEBA SOCIAL EN VIVO (EUROPA)
+   ========================================================================= */
+.social-proof-toast {
+  position: fixed;
+  bottom: 25px;
+  left: 18px;
+  background: rgba(18, 9, 4, 0.95);
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 5500;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  max-width: 320px;
+  animation: slideInLeft 0.5s ease;
+  backdrop-filter: blur(8px);
+}
+
+.social-proof-toast.show {
+  display: flex;
+}
+
+.toast-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(243, 198, 76, 0.15);
+  border: 1px solid var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.toast-content {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #ccc;
+}
+
+.toast-name strong {
+  color: #fff;
+}
+
+.toast-action em {
+  color: var(--gold-glow);
+  font-style: normal;
+}
+
+.toast-time {
+  display: block;
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px;
+  margin-left: auto;
+}
+
+.toast-close:hover {
+  color: #fff;
+}
+
+/* =========================================================================
+   MODAL LIGHTBOX TESTIMONIOS
+   ========================================================================= */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 7000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightbox-modal.open {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 8px;
+  border: 1px solid var(--gold-dark);
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* =========================================================================
+   ANIMACIONES
+   ========================================================================= */
+@keyframes zoomStars {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes bgPulse {
+  0% { background-position: 50% 50%; }
+  100% { background-position: 50% 55%; }
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 10px rgba(243, 198, 76, 0.2); }
+  100% { text-shadow: 0 0 25px rgba(243, 198, 76, 0.6); }
+}
+
+@keyframes pulseElegant {
+  0% { box-shadow: 0 0 0 0 rgba(243, 198, 76, 0.6); }
+  70% { box-shadow: 0 0 0 16px rgba(243, 198, 76, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(243, 198, 76, 0); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* =========================================================================
+   RESPONSIVIDAD MÓVIL REFINADA
+   ========================================================================= */
+@media (max-width: 768px) {
+  header {
+    padding: 5rem 1rem 3.8rem;
+  }
+
+  .header-overlay {
+    background-position: center 20%;
+  }
+
+  .hero-badge-top {
+    font-size: 0.76rem;
+    padding: 4px 14px;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    font-size: 1.02rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight {
+    font-size: 1.15rem;
+  }
+
+  .hero-chips {
+    gap: 7px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-chip {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+
+  .nav-toggle-label {
+    display: block;
+    color: var(--gold-primary);
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(13, 7, 3, 0.98);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gold-dark);
+    gap: 1.2rem;
+  }
+
+  .nav-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  .oracle-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 230px;
+    gap: 1.2rem;
+  }
+
+  .oracle-box {
+    padding: 2rem 1rem;
+    margin: 3.5rem auto 2.5rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .pasos-grid,
+  .sellos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .img-unica-transformacion {
+    margin: 3.5rem auto 2rem;
+  }
+
+  .texto-transformacion {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .texto-transformacion h3 {
+    font-size: 1.4rem;
+  }
+
+  .texto-transformacion p {
+    font-size: 0.96rem;
+  }
+
+  .whatsapp-btn {
+    padding: 0.88rem 1.8rem;
+    font-size: 0.94rem;
+    width: 100%;
+    max-width: 320px;
+    margin: 1.8rem auto;
+  }
+
+  .social-proof-toast {
+    bottom: 85px;
+    left: 12px;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  .urgency-top-bar {
+    padding: 7px 8px;
+  }
+
+  .urgency-content {
+    gap: 5px;
+    flex-direction: column;
+  }
+
+  .urgency-text-wrap {
+    font-size: 0.78rem;
+  }
+
+  .urgency-link {
+    font-size: 0.74rem;
+    padding: 2px 10px;
+  }
+
+  header {
+    padding: 4.2rem 0.8rem 3.2rem;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+    letter-spacing: 1px;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .beneficios li {
+    font-size: 0.98rem;
+  }
+}
