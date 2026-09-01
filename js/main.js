@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGlobalWhatsApp();
     initLiveSocialProof();
     initTestimonialLightbox();
+    initAudioTestimonials();
     initMobileNav();
     initUrgencyCounter();
 });
@@ -143,4 +144,155 @@ function initUrgencyCounter() {
         const available = hours > 18 ? 2 : (hours > 12 ? 3 : 4);
         cuposEl.textContent = `${available} cupos`;
     }
+}
+
+/* -------------------------------------------------------------------------
+   6. REPRODUCTOR DE NOTAS DE VOZ (TESTIMONIOS REALES)
+   ------------------------------------------------------------------------- */
+function initAudioTestimonials() {
+    const cards = document.querySelectorAll('.audio-note-card');
+    if (!cards.length) return;
+
+    let currentAudio = null;
+    let currentActiveBtn = null;
+    let currentActiveCard = null;
+
+    function formatTime(seconds) {
+        if (isNaN(seconds) || seconds === Infinity) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function playWhatsAppChime() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.12, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.14);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.14);
+        } catch (e) {
+            // AudioContext bloqueado o no soportado
+        }
+    }
+
+    function stopCurrentAudio() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
+        if (currentActiveBtn) {
+            currentActiveBtn.innerHTML = '<i class="fas fa-play"></i>';
+            currentActiveBtn.classList.remove('playing');
+            currentActiveBtn = null;
+        }
+        if (currentActiveCard) {
+            const bar = currentActiveCard.querySelector('.audio-progress-bar');
+            if (bar) bar.style.width = '0%';
+            currentActiveCard = null;
+        }
+    }
+
+    cards.forEach(card => {
+        const audioSrc = card.getAttribute('data-audio');
+        const playBtn = card.querySelector('.audio-play-btn');
+        const progressBar = card.querySelector('.audio-progress-bar');
+        const track = card.querySelector('.audio-track');
+        const timeDisplay = card.querySelector('.audio-time');
+
+        if (!audioSrc || !playBtn) return;
+
+        const audio = new Audio(audioSrc);
+        audio.preload = 'metadata';
+
+        audio.addEventListener('loadedmetadata', () => {
+            if (timeDisplay && audio.duration && !isNaN(audio.duration)) {
+                timeDisplay.textContent = formatTime(audio.duration);
+            }
+        });
+
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            // Si este mismo audio ya está en reproducción
+            if (currentAudio === audio && currentActiveCard === card) {
+                if (!currentAudio.paused) {
+                    currentAudio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playBtn.classList.remove('playing');
+                    return;
+                } else {
+                    currentAudio.play();
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.classList.add('playing');
+                    return;
+                }
+            }
+
+            // Si hay otro audio activo, detenerlo
+            stopCurrentAudio();
+            playWhatsAppChime();
+
+            // Asignar el nuevo audio activo
+            currentAudio = audio;
+            currentActiveBtn = playBtn;
+            currentActiveCard = card;
+
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            playBtn.classList.add('playing');
+
+            audio.play().catch(err => {
+                console.warn('Error al reproducir audio:', err);
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.classList.remove('playing');
+            });
+        });
+
+        // Actualizar progreso
+        audio.addEventListener('timeupdate', () => {
+            if (currentAudio === audio && audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                if (progressBar) progressBar.style.width = `${pct}%`;
+                if (timeDisplay) {
+                    timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+                }
+            }
+        });
+
+        // Al finalizar
+        audio.addEventListener('ended', () => {
+            if (currentActiveBtn) {
+                currentActiveBtn.innerHTML = '<i class="fas fa-play"></i>';
+                currentActiveBtn.classList.remove('playing');
+            }
+            if (progressBar) progressBar.style.width = '0%';
+            if (timeDisplay && audio.duration) {
+                timeDisplay.textContent = formatTime(audio.duration);
+            }
+            currentAudio = null;
+            currentActiveBtn = null;
+            currentActiveCard = null;
+        });
+
+        // Permitir click en la pista para avanzar/retroceder
+        if (track) {
+            track.addEventListener('click', (e) => {
+                if (audio.duration && !isNaN(audio.duration)) {
+                    const rect = track.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const pct = Math.max(0, Math.min(1, clickX / rect.width));
+                    audio.currentTime = pct * audio.duration;
+                    if (progressBar) progressBar.style.width = `${pct * 100}%`;
+                }
+            });
+        }
+    });
 }
