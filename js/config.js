@@ -16,13 +16,13 @@ const SITE_CONFIG = {
     },
 
     whatsapp: {
-        phone: "50239424561",
-        defaultMessage: "¡Hola Maestra Selene! Necesito una consulta espiritual urgente y confidencial desde España. ¿Podría asesorarme?",
-        urgencyMessage: "Hola Maestra Selene, veo que quedan pocos cupos prioritarios para hoy en España. Deseo apartar mi consulta de inmediato.",
+        phone: "34663345636",
+        defaultMessage: "¡Hola Maestra Selene! Necesito una consulta espiritual urgente y confidencial. ¿Podría asesorarme?",
+        urgencyMessage: "Hola Maestra Selene, veo que quedan pocos cupos prioritarios. Deseo apartar mi consulta de inmediato.",
         serviceMessage: (serviceName) => `Hola Maestra Selene, solicito información y consulta urgente sobre el ritual: "${serviceName}".`,
         oracleMessage: (cardNames) => `Hola Maestra Selene, realicé la tirada del Tarot en tu página y me salieron las cartas: [${cardNames}]. Deseo mi interpretación completa.`,
         diagMessage: (area, symptom) => `Hola Maestra Selene, realicé el test espiritual sobre ${area || 'mi caso'} con síntoma de ${symptom || 'bloqueo'}. Deseo consultar con usted.`,
-        testimonialMessage: "Hola Maestra Selene, vi los casos de éxito resueltos en España y deseo una ayuda y resultado similar para mi caso."
+        testimonialMessage: "Hola Maestra Selene, vi los casos de éxito resueltos y deseo una ayuda y resultado similar para mi caso."
     },
 
     // Notificaciones de Prueba Social en Vivo (España)

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURACIÓN GLOBAL ---
     // Centralizamos los datos para que cambiarlos sea instantáneo y no afecte el rastreo
     const CONFIG_WP = {
-        phone: "50239424561",
+        phone: "34663345636",
         message: "¡Hola Sara! Necesito ayuda. ¿Podría asesorarme?"
     };
 
