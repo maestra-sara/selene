@@ -143,8 +143,8 @@ function initTarotOracle() {
         if (drawnSpan) drawnSpan.textContent = names;
         if (summaryP) {
             summaryP.innerHTML = `
-                Tus cartas revelan una fuerte oportunidad de transformación: <strong>${drawn[0].name}</strong> en tu pasado, 
-                <strong>${drawn[1].name}</strong> actuando en tu presente y <strong>${drawn[2].name}</strong> abriendo tu camino hacia la victoria.
+                Tus cartas revelan una oportunidad de crecimiento y orientación: <strong>${drawn[0].name}</strong> en tu pasado, 
+                <strong>${drawn[1].name}</strong> presente en tu energía actual y <strong>${drawn[2].name}</strong> guiando tu camino hacia la armonía y el bienestar.
             `;
         }
         if (waBtn) {
